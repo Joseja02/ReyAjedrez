@@ -47,5 +47,20 @@ public class Rey {
         this.posicion = new Posicion(1, 'e');
     }
 
+    public Rey(Color color){
+
+        switch (color){
+
+            case BLANCO:
+                this.posicion = new Posicion(1, 'e');
+                break;
+
+            case NEGRO:
+                this.posicion = new Posicion(8, 'e');
+                break;
+        }
+    }
+
+
 
 }
