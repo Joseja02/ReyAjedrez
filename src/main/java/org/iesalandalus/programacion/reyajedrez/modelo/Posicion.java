@@ -25,4 +25,12 @@ public class Posicion {
         }
         this.columna = columna;
     }
+
+    public Posicion(int fila, char columna){
+        setFila(fila);
+        setColumna(columna);
+    }
+
+
+
 }
