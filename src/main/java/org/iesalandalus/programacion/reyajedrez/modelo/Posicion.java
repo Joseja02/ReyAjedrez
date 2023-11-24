@@ -31,6 +31,10 @@ public class Posicion {
         setColumna(columna);
     }
 
+    public Posicion (Posicion posicionCopia) {
+        this.fila = posicionCopia.getFila();
+        this.columna = posicionCopia.getColumna();
+    }
 
 
 }
