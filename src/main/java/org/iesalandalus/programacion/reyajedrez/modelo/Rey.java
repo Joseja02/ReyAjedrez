@@ -1,5 +1,7 @@
 package org.iesalandalus.programacion.reyajedrez.modelo;
 
+import javax.naming.OperationNotSupportedException;
+
 public class Rey {
 
     private Color color;
@@ -61,6 +63,54 @@ public class Rey {
         }
     }
 
+    public void mover (Direccion direccion) throws OperationNotSupportedException {
 
+        if (direccion == null){
+            throw new IllegalArgumentException("Error: La dirección no puede ser nula.");
+        }
 
+        try {
+            switch (direccion){
+
+                case ENROQUE_CORTO, ENROQUE_LARGO:
+                    break;
+
+                case NORTE:
+                    this.posicion.setFila(this.posicion.getFila() + 1);
+                    break;
+
+                case SUR:
+                    this.posicion.setFila(this.posicion.getFila() - 1);
+                    break;
+
+                case ESTE:
+                    this.posicion.setColumna((char) (this.posicion.getColumna() + 1));
+                    break;
+
+                case OESTE:
+                    this.posicion.setColumna((char) (this.posicion.getColumna() - 1));
+                    break;
+
+                case NORESTE:
+                    this.posicion = new Posicion(this.posicion.getFila() + 1,(char) (this.posicion.getColumna() + 1));
+                    break;
+
+                case SURESTE:
+                    this.posicion = new Posicion(this.posicion.getFila() - 1,(char) (this.posicion.getColumna() + 1));
+                    break;
+
+                case NOROESTE:
+                    this.posicion = new Posicion(this.posicion.getFila() + 1,(char) (this.posicion.getColumna() - 1));
+                    break;
+
+                case SUROESTE:
+                    this.posicion = new Posicion(this.posicion.getFila() - 1,(char) (this.posicion.getColumna() - 1));
+                    break;
+            }
+            setTotalMovimientos(getTotalMovimientos() + 1);
+
+        } catch (IllegalArgumentException ex){
+            throw new OperationNotSupportedException("Movimiento no permitido: " + ex.getMessage());
+        }
+    }
 }

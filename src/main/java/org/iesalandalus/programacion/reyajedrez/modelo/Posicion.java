@@ -13,7 +13,7 @@ public class Posicion {
     public void setFila(int fila){
 
         if (fila < 1 || fila > 8){
-            throw new IllegalArgumentException("Error, valor introducido erroneo. Introduce un valor entre 1 y 8");
+            throw new IllegalArgumentException("Error, el valor permitido para la fila debe estar entre 1 y 8");
         }
         this.fila = fila;
     }
@@ -23,7 +23,7 @@ public class Posicion {
     public void setColumna(char columna){
 
         if (Character.toLowerCase(columna) < 'a' || Character.toLowerCase(columna) > 'h' ){
-            throw new IllegalArgumentException("Error, valor introducido erroneo. Introduce una letra entre 'a' y 'h'");
+            throw new IllegalArgumentException("Error, el valor permitido para la columna debe estar entre 'a' y 'h'");
         }
         this.columna = columna;
     }
