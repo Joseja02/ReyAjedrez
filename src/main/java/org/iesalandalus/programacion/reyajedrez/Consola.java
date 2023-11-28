@@ -1,5 +1,7 @@
 package org.iesalandalus.programacion.reyajedrez;
 
-public class Consola {
+public final class Consola {
+    public Consola() {
+    }
 
 }
