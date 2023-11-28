@@ -1,5 +1,6 @@
 package org.iesalandalus.programacion.reyajedrez;
 
+import org.iesalandalus.programacion.reyajedrez.modelo.Color;
 import org.iesalandalus.programacion.utilidades.Entrada;
 
 public final class Consola {
@@ -27,5 +28,29 @@ public final class Consola {
             } while (opcionMenu < 1 || opcionMenu > 4);
         }
         return opcionMenu;
+    }
+
+    public Color elegirOpcion(){
+        Color colorElegido = Color.BLANCO;     // Asignamos por defecto el color BLANCO para poder inicializar la variable colorElegido.
+        int opcionColor;
+        System.out.println("| ----- Elige un color ----- |");
+        System.out.println("1.- Blanco");
+        System.out.println("2.- Negro");
+        opcionColor = Entrada.entero();
+
+        if (opcionColor < 1 || opcionColor > 2){
+            do {
+                System.out.print("ERROR: Has introducido una opción fuera de rango. Selecciona una de las opciones mostradas arriba: ");
+                opcionColor = Entrada.entero();
+            } while (opcionColor < 1 || opcionColor > 2);
+        }
+        switch (opcionColor){
+            case 1:
+                break;
+            case 2:
+                colorElegido = Color.NEGRO;
+                break;
+        }
+        return colorElegido;
     }
 }
