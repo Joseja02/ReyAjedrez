@@ -71,8 +71,18 @@ public class Rey {
 
         try {
             switch (direccion){
+                case ENROQUE_CORTO:
+                    if (totalMovimientos != 0){
+                        throw new OperationNotSupportedException("Error: No se cumplen las condiciones para hacer el enroque.");
+                    }
+                    this.posicion.setColumna((char) (this.posicion.getColumna() + 2));
+                    break;
 
-                case ENROQUE_CORTO, ENROQUE_LARGO:
+                case ENROQUE_LARGO:
+                    if (totalMovimientos != 0){
+                        throw new OperationNotSupportedException("Error: No se cumplen las condiciones para hacer el enroque.");
+                    }
+                    this.posicion.setColumna((char) (this.posicion.getColumna() - 2));
                     break;
 
                 case NORTE:
@@ -92,7 +102,7 @@ public class Rey {
                     break;
 
                 case NORESTE:
-                    this.posicion = new Posicion(this.posicion.getFila() + 1,(char) (this.posicion.getColumna() + 1));
+                    this.posicion = new Posicion(this.posicion.getFila() + 1, (char) (this.posicion.getColumna() + 1));
                     break;
 
                 case SURESTE:
