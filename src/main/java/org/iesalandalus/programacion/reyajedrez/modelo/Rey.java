@@ -123,4 +123,9 @@ public class Rey {
             throw new OperationNotSupportedException("Movimiento no permitido: " + ex.getMessage());
         }
     }
+
+    @Override
+    public String toString() {
+        return "color="+this.color+", posicion=(fila="+this.posicion.getFila()+", columna="+this.posicion.getColumna()+")";
+    }
 }
