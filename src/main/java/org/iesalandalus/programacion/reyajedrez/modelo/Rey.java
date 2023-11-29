@@ -21,9 +21,8 @@ public class Rey {
     }
 
     public void setColor(Color color) {
-
         if (color == null){
-            throw new IllegalArgumentException("Error: El argumento color es erróneo.");
+            throw new NullPointerException("ERROR: El color no puede ser nulo.");
         }
         this.color = color;
     }
@@ -31,7 +30,7 @@ public class Rey {
     public void setPosicion(Posicion posicion) {
 
         if (posicion == null){
-            throw new IllegalArgumentException("Error: El argumento color es erróneo.");
+            throw new NullPointerException("ERROR: La posición no puede ser nula.");
         }
         this.posicion = posicion;
     }
@@ -45,8 +44,11 @@ public class Rey {
     }
 
     public Rey(){
-        this.color = Color.BLANCO;
-        this.posicion = new Posicion(1, 'e');
+        setColor(Color.BLANCO);
+        setPosicion(new Posicion(1, 'e'));
+
+       // this.color = Color.BLANCO;
+       // this.posicion = new Posicion(1, 'e');
     }
 
     public Rey(Color color){
@@ -54,11 +56,15 @@ public class Rey {
         switch (color){
 
             case BLANCO:
-                this.posicion = new Posicion(1, 'e');
+                setColor(Color.BLANCO);
+                setPosicion(new Posicion(1, 'e'));
+               // this.posicion = new Posicion(1, 'e');
                 break;
 
             case NEGRO:
-                this.posicion = new Posicion(8, 'e');
+                setColor(Color.NEGRO);
+                setPosicion(new Posicion(8, 'e'));
+                //this.posicion = new Posicion(8, 'e');
                 break;
         }
     }
@@ -66,21 +72,22 @@ public class Rey {
     public void mover (Direccion direccion) throws OperationNotSupportedException {
 
         if (direccion == null){
-            throw new IllegalArgumentException("Error: La dirección no puede ser nula.");
+            throw new NullPointerException("ERROR: La dirección no puede ser nula.");
         }
 
         try {
             switch (direccion){
                 case ENROQUE_CORTO:
                     if (totalMovimientos != 0){
-                        throw new OperationNotSupportedException("Error: No se cumplen las condiciones para hacer el enroque.");
+                        throw new OperationNotSupportedException("ERROR: El rey no está en su posición inicial.");
                     }
                     this.posicion.setColumna((char) (this.posicion.getColumna() + 2));
                     break;
 
                 case ENROQUE_LARGO:
                     if (totalMovimientos != 0){
-                        throw new OperationNotSupportedException("Error: No se cumplen las condiciones para hacer el enroque.");
+                        throw new OperationNotSupportedException("ERROR: El rey no está en su posición inicial.");
+                        // ERROR: El rey no está en su posición inicial.    ERROR: El rey ya se ha movido antes.
                     }
                     this.posicion.setColumna((char) (this.posicion.getColumna() - 2));
                     break;
@@ -120,7 +127,8 @@ public class Rey {
             setTotalMovimientos(getTotalMovimientos() + 1);
 
         } catch (IllegalArgumentException ex){
-            throw new OperationNotSupportedException("Movimiento no permitido: " + ex.getMessage());
+            throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
+           // throw new OperationNotSupportedException("Movimiento no permitido: " + ex.getMessage());
         }
     }
 

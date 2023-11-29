@@ -7,8 +7,8 @@ import javax.naming.OperationNotSupportedException;
 
 public class MainApp {
 
-    private Rey rey=null;
-    private void ejecutarOpcion(int opcionElegida){
+    private static Rey rey=null;
+    private static void ejecutarOpcion(int opcionElegida){
 
         switch (opcionElegida){
             case 1:
@@ -26,13 +26,13 @@ public class MainApp {
         }
 
     }
-    private void crearReyDefecto(){
+    private static void crearReyDefecto(){
         rey = new Rey();
     }
-    private void crearReyColor(){
+    private static void crearReyColor(){
         rey = new Rey(Consola.elegirOpcion());
     }
-    private void mover(){
+    private static void mover(){
         Consola.mostrarMenuDirecciones();
         try{
             Direccion direccionElegida= Consola.elegirDireccion();
@@ -41,7 +41,7 @@ public class MainApp {
             System.out.print(e.getMessage());
         }
     }
-    private void mostrarRey(){
+    private static void mostrarRey(){
         if(rey!=null){
             System.out.println(rey.toString());
         } else {
@@ -49,7 +49,23 @@ public class MainApp {
         }
     }
     public static void main(String[] args) {
-
-
+        int opcionMenu;
+        do {
+            Consola.mostrarMenu();
+            opcionMenu = Consola.elegirOpcionMenu();
+            ejecutarOpcion(opcionMenu);
+            mostrarRey();
+        } while (opcionMenu != 4);
     }
 }
+
+
+
+
+
+
+/* do {
+        Consola.mostrarMenu();
+        ejecutarOpcion(Consola.elegirOpcionMenu());
+        mostrarRey();
+        } while (Consola.elegirOpcionMenu() != 4); */
