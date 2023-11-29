@@ -1,6 +1,7 @@
 package org.iesalandalus.programacion.reyajedrez;
 
 import org.iesalandalus.programacion.reyajedrez.modelo.Color;
+import org.iesalandalus.programacion.reyajedrez.modelo.Direccion;
 import org.iesalandalus.programacion.utilidades.Entrada;
 
 public final class Consola {
@@ -62,5 +63,9 @@ public final class Consola {
         System.out.println("4.- Oeste");
         System.out.println("5.- Noreste");
         System.out.println("6.- Noroeste");
+        System.out.println("7.- Sureste");
+        System.out.println("8.- Suroeste");
+        System.out.println("9.- Enroque Largo");
+        System.out.println("10.- Enroque Corte");
     }
 }
