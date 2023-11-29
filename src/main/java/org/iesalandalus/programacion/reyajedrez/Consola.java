@@ -68,4 +68,53 @@ public final class Consola {
         System.out.println("9.- Enroque Largo");
         System.out.println("10.- Enroque Corte");
     }
+    public Direccion elegirDireccion(){
+
+        Direccion direccionElegida = Direccion.NORTE;   // Asignamos por defecto la dirección NORTE para poder inicializar la variable direccionElegida.
+        int opcionDireccion;
+
+        System.out.print("Introduce una de las opciones mostradas arriba: ");
+        opcionDireccion = Entrada.entero();
+
+        if (opcionDireccion < 1 || opcionDireccion > 10){
+            do {
+                System.out.print("ERROR: Has introducido una opción fuera de rango. Selecciona una de las opciones mostradas arriba: ");
+                opcionDireccion = Entrada.entero();
+            } while (opcionDireccion < 1 || opcionDireccion > 2);
+        }
+
+        switch (opcionDireccion){
+
+            case 1:
+                break;
+            case 2:
+                direccionElegida = Direccion.SUR;
+                break;
+            case 3:
+                direccionElegida = Direccion.ESTE;
+                break;
+            case 4:
+                direccionElegida = Direccion.OESTE;
+                break;
+            case 5:
+                direccionElegida = Direccion.NORESTE;
+                break;
+            case 6:
+                direccionElegida = Direccion.NOROESTE;
+                break;
+            case 7:
+                direccionElegida = Direccion.SURESTE;
+                break;
+            case 8:
+                direccionElegida = Direccion.SUROESTE;
+                break;
+            case 9:
+                direccionElegida = Direccion.ENROQUE_LARGO;
+                break;
+            case 10:
+                direccionElegida = Direccion.ENROQUE_CORTO;
+                break;
+        }
+        return direccionElegida;
+    }
 }
