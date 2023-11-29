@@ -1,6 +1,9 @@
 package org.iesalandalus.programacion.reyajedrez;
 import org.iesalandalus.programacion.reyajedrez.modelo.Color;
+import org.iesalandalus.programacion.reyajedrez.modelo.Direccion;
 import org.iesalandalus.programacion.reyajedrez.modelo.Rey;
+
+import javax.naming.OperationNotSupportedException;
 
 public class MainApp {
 
@@ -28,6 +31,15 @@ public class MainApp {
     }
     private void crearReyColor(){
         rey = new Rey(Consola.elegirOpcion());
+    }
+    private void mover(){
+        Consola.mostrarMenuDirecciones();
+        try{
+            Direccion direccionElegida= Consola.elegirDireccion();
+            rey.mover(direccionElegida);
+        }catch (OperationNotSupportedException e){
+            System.out.print(e.getMessage());
+        }
     }
     public static void main(String[] args) {
 
