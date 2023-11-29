@@ -18,6 +18,7 @@ public final class Consola {
 
     public int elegirOpcionMenu(){
         int opcionMenu;
+        System.out.println("");
         System.out.print("Elige una opción: ");
         opcionMenu = Entrada.entero();
 
@@ -52,5 +53,14 @@ public final class Consola {
                 break;
         }
         return colorElegido;
+    }
+    public void mostrarMenuDirecciones(){
+        System.out.println("");
+        System.out.println("1.- Norte");
+        System.out.println("2.- Sur");
+        System.out.println("3.- Este");
+        System.out.println("4.- Oeste");
+        System.out.println("5.- Noreste");
+        System.out.println("6.- Noroeste");
     }
 }
