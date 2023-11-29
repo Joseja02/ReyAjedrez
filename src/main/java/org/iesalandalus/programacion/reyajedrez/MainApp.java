@@ -4,7 +4,7 @@ import org.iesalandalus.programacion.reyajedrez.modelo.Rey;
 public class MainApp {
 
     private Rey rey;
-    public void ejecutarOpcion(int opcionElegida){
+    private void ejecutarOpcion(int opcionElegida){
 
         switch (opcionElegida){
             case 1:
@@ -21,7 +21,9 @@ public class MainApp {
                 break;
         }
 
-
+    }
+    private void crearReyDefecto(){
+        rey = new Rey();
     }
     public static void main(String[] args) {
 
