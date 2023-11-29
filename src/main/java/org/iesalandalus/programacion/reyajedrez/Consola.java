@@ -7,7 +7,7 @@ import org.iesalandalus.programacion.utilidades.Entrada;
 public final class Consola {
     public Consola() {
     }
-    public void mostrarMenu(){
+    public static void mostrarMenu(){
         System.out.println("");
         System.out.println(" | ------- Programa Rey Ajedrez v1.0 (hecho por José Javier Sierra) ------- |");
         System.out.println("1.- Crear Rey por defecto");
@@ -17,7 +17,7 @@ public final class Consola {
         System.out.println("| ------------------------------------------------------------------------- |");
     }
 
-    public int elegirOpcionMenu(){
+    public static int elegirOpcionMenu(){
         int opcionMenu;
         System.out.println("");
         System.out.print("Elige una opción: ");
@@ -32,7 +32,7 @@ public final class Consola {
         return opcionMenu;
     }
 
-    public Color elegirOpcion(){
+    public static Color elegirOpcion(){
         Color colorElegido = Color.BLANCO;     // Asignamos por defecto el color BLANCO para poder inicializar la variable colorElegido.
         int opcionColor;
         System.out.println("| ----- Elige un color ----- |");
@@ -55,7 +55,7 @@ public final class Consola {
         }
         return colorElegido;
     }
-    public void mostrarMenuDirecciones(){
+    public static void mostrarMenuDirecciones(){
         System.out.println("");
         System.out.println("1.- Norte");
         System.out.println("2.- Sur");
@@ -68,7 +68,7 @@ public final class Consola {
         System.out.println("9.- Enroque Largo");
         System.out.println("10.- Enroque Corte");
     }
-    public Direccion elegirDireccion(){
+    public static Direccion elegirDireccion(){
 
         Direccion direccionElegida = Direccion.NORTE;   // Asignamos por defecto la dirección NORTE para poder inicializar la variable direccionElegida.
         int opcionDireccion;
@@ -117,7 +117,7 @@ public final class Consola {
         }
         return direccionElegida;
     }
-    public void despedirse(){
+    public static void despedirse(){
         System.out.println("");
         System.out.println("¡Gracias por jugar! ¡Hasta la próxima!");
     }
