@@ -117,4 +117,8 @@ public final class Consola {
         }
         return direccionElegida;
     }
+    public void despedirse(){
+        System.out.println("");
+        System.out.println("¡Gracias por jugar! ¡Hasta la próxima!");
+    }
 }
