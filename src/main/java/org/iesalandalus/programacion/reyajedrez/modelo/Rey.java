@@ -6,6 +6,8 @@ public class Rey {
 
     private Color color;
     private Posicion posicion;
+    private final Posicion posicionInicialReyBlanco= new Posicion(1, 'e');
+    private final Posicion posicionInicialReyNegro = new Posicion(8, 'e');
     private int totalMovimientos;
 
     public Color getColor() {
@@ -46,25 +48,24 @@ public class Rey {
     public Rey(){
         setColor(Color.BLANCO);
         setPosicion(new Posicion(1, 'e'));
-
-       // this.color = Color.BLANCO;
-       // this.posicion = new Posicion(1, 'e');
     }
 
     public Rey(Color color){
+
+        if (color == null){
+            throw new NullPointerException("ERROR: El color no puede ser nulo.");
+        }
 
         switch (color){
 
             case BLANCO:
                 setColor(Color.BLANCO);
                 setPosicion(new Posicion(1, 'e'));
-               // this.posicion = new Posicion(1, 'e');
                 break;
 
             case NEGRO:
                 setColor(Color.NEGRO);
                 setPosicion(new Posicion(8, 'e'));
-                //this.posicion = new Posicion(8, 'e');
                 break;
         }
     }
@@ -78,16 +79,27 @@ public class Rey {
         try {
             switch (direccion){
                 case ENROQUE_CORTO:
-                    if (totalMovimientos != 0){
+                    if(color==Color.BLANCO && !posicion.equals(posicionInicialReyBlanco)){
                         throw new OperationNotSupportedException("ERROR: El rey no está en su posición inicial.");
+                    }
+                    if(color==Color.NEGRO && !posicion.equals(posicionInicialReyNegro)){
+                        throw new OperationNotSupportedException("ERROR: El rey no está en su posición inicial.");
+                    }
+                    if (totalMovimientos != 0){
+                        throw new OperationNotSupportedException("ERROR: El rey ya se ha movido antes.");
                     }
                     this.posicion.setColumna((char) (this.posicion.getColumna() + 2));
                     break;
 
                 case ENROQUE_LARGO:
-                    if (totalMovimientos != 0){
+                    if(color==Color.BLANCO && !posicion.equals(posicionInicialReyBlanco)){
                         throw new OperationNotSupportedException("ERROR: El rey no está en su posición inicial.");
-                        // ERROR: El rey no está en su posición inicial.    ERROR: El rey ya se ha movido antes.
+                    }
+                    if(color==Color.NEGRO && !posicion.equals(posicionInicialReyNegro)){
+                        throw new OperationNotSupportedException("ERROR: El rey no está en su posición inicial.");
+                    }
+                    if (totalMovimientos != 0){
+                        throw new OperationNotSupportedException("ERROR: El rey ya se ha movido antes.");
                     }
                     this.posicion.setColumna((char) (this.posicion.getColumna() - 2));
                     break;
@@ -128,7 +140,6 @@ public class Rey {
 
         } catch (IllegalArgumentException ex){
             throw new OperationNotSupportedException("ERROR: Movimiento no válido (se sale del tablero).");
-           // throw new OperationNotSupportedException("Movimiento no permitido: " + ex.getMessage());
         }
     }
 
